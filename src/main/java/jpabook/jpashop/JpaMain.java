@@ -3,6 +3,7 @@ package jpabook.jpashop;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -51,7 +52,7 @@ public class JpaMain {
             findOrder.setMember(newMember);
 
             System.out.println("find order's member => "+ findOrder.getMember().getUsername());
-*/
+
             // orders 조회
 
             Member memberA = em.find(Member.class, 3L);
@@ -62,9 +63,13 @@ public class JpaMain {
 
 
 
-/*            for(Order or : orders){
+         for(Order or : orders){
                 System.out.println("order => "+or.getId());
-            }*/
+            }
+            */
+
+            Order order = new Order();
+            order.addOrderItem(new OrderItem());
 
             tx.commit();
         } catch(Exception exception){
