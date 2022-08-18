@@ -1,7 +1,15 @@
 package jpabook.jpashop.domain;
 
-import javax.persistence.*;
+import com.sun.org.apache.xpath.internal.operations.Or;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
 @Entity
 public class Member {
 
@@ -12,39 +20,16 @@ public class Member {
     @Column(name = "name")
     private String username;
 
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+
+    public void addOrder(Order order){
+        order.setMember(this);
+        orders.add(order);
+    }
+
     private String city;
 
     private String zipcode;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
 }
