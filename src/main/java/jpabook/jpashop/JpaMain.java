@@ -1,5 +1,6 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Book;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
 
@@ -63,10 +64,18 @@ public class JpaMain {
          for(Order or : orders){
                 System.out.println("order => "+or.getId());
             }
-            */
+
 
             Order order = new Order();
             order.addOrderItem(new OrderItem());
+            */
+
+            // 상속관계 매핑(단일 테이블 전략)
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("저자");
+
+            em.persist(book);
 
             tx.commit();
         } catch(Exception exception){
