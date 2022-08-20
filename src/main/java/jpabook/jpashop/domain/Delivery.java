@@ -15,9 +15,8 @@ public class Delivery extends BaseEntity {
     @Id @GeneratedValue
     private int id;
 
-    private String city;
-    private String street;
-    private String zipcode;
+    @Embedded
+    private Address address;
     private DeliveryStatus status;
 
     @OneToOne(mappedBy = "delivery", fetch = LAZY)

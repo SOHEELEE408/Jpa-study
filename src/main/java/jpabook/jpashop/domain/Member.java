@@ -17,6 +17,9 @@ public class Member extends BaseEntity {
     @Column(name = "name")
     private String username;
 
+    @Embedded
+    private Address address;
+
 /*  단방향으로 먼저 설계
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
@@ -26,10 +29,5 @@ public class Member extends BaseEntity {
         orders.add(order);
     }*/
 
-    private String city;
-
-    private String street;
-
-    private String zipcode;
 
 }
